@@ -7,6 +7,8 @@ export const pointsApi = {
 
   checkin: () => api.post('/points/checkin'),
 
+  getCheckinStatus: () => api.get('/points/checkin/status'),
+
   getMallItems: () => api.get('/points/mall'),
 
   redeem: (itemId: string) => api.post(`/points/mall/${itemId}/redeem`),
