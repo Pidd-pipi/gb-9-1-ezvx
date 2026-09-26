@@ -1,6 +1,7 @@
 package com.knowledge.platform.controller;
 
 import com.knowledge.platform.dto.ApiResponse;
+import com.knowledge.platform.dto.CheckinStatus;
 import com.knowledge.platform.entity.Checkin;
 import com.knowledge.platform.entity.PointsAccount;
 import com.knowledge.platform.entity.PointsRecord;
@@ -49,6 +50,15 @@ public class PointsController {
         }
         Pageable pageable = PageRequest.of(page, size, Sort.by(Sort.Direction.DESC, "createdAt"));
         return ApiResponse.success(pointsRecordRepository.findByUserIdOrderByCreatedAtDesc(userId, pageable));
+    }
+
+    @GetMapping("/checkin/status")
+    public ApiResponse<CheckinStatus> getCheckinStatus() {
+        String userId = currentUserUtil.getCurrentUserId();
+        if (userId == null) {
+            return ApiResponse.error("请先登录");
+        }
+        return ApiResponse.success(checkinService.getStatus(userId));
     }
 
     @PostMapping("/checkin")

@@ -132,6 +132,22 @@ export interface PointsRecord {
   createdAt: string
 }
 
+export interface Checkin {
+  id: string
+  userId: string
+  date: string
+  streak?: number
+  points?: number
+  createdAt: string
+}
+
+export interface CheckinStatus {
+  checkedToday: boolean
+  streak: number
+  todayPoints: number
+  recentCheckins: Checkin[]
+}
+
 export interface Coupon {
   id: string
   userId: string

@@ -19,5 +19,16 @@ public class Checkin {
 
     private LocalDate date;
 
+    /**
+     * 连续签到天数：本次签到完成后所处的连续天数。
+     * 断签后次日签到从 1 重新开始。
+     */
+    private Integer streak;
+
+    /**
+     * 本次签到实际发放的积分，按签到时的连续天数依据奖励规则计算。
+     */
+    private Integer points;
+
     private LocalDateTime createdAt;
 }
